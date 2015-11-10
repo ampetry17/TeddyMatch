@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <div id="SmilingTedFrame" style="float: left; margin:10px">
+        <img alt="Theodore Petry at almost 2 years old" src="/Content/Images/SmilinTed.jpg" />
+    </div>
+    <h1>Teddy Match</h1>
+    
+    <p class="lead">Teddy Match is a simple matching game. You can load a set of words, and it will then present
+        those words, along with an image gleaned from Microsoft's Bing Image Search API to pull in a matching image.
+        It will then ask the player to match the word with the picture. It also uses 
+        <a href="http://responsivevoice.org/">ResponsiveVoice.js</a> non-commercial
+        to provide simple voice feedback for the player, which is important, because the game was designed specifically
+        for this player, and while he can read individual letters, he can't read words yet.
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Load Words</h2>
+        <p>
+            First, you need to set up a set of words that will be searched on. These words are just stored locally for
+            the session that you're playing under, and won't last forever. Every time you come back, you'll have to
+            load new words.
+        </p>
+        <p><a class="btn btn-default" href="">Load Words</a></p>
+    </div>
+    <div class="col-md-6">
+        <h2>Play the Game</h2>
+        <p>Once you've loaded your words, now you can play the game.</p>
+        <p><a class="btn btn-default" href="">Play</a></p>
+    </div>
+    
+</div>
