@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using TeddyMatch.Model;
+using TeddyMatch.TMObjectLibrary;
 
 namespace TeddyMatch.Controllers
 {
@@ -11,19 +9,14 @@ namespace TeddyMatch.Controllers
         // GET: Setup
         public ActionResult Index()
         {
-            return View();
-        }
-
-        // GET: Setup/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            return View(TeddyMatchModel.InitializeModelObject(Session["Model"]));
         }
 
         // GET: Setup/Create
         public ActionResult Create()
         {
-            return View();
+            MatchWord Word = new MatchWord();
+            return View(Word);
         }
 
         // POST: Setup/Create
@@ -32,8 +25,7 @@ namespace TeddyMatch.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-
+                TeddyMatchModel.Add(Session, new MatchWord { Word = Request.Form["Word"], ImageUrl = Request.Form["ImageURL"] });
                 return RedirectToAction("Index");
             }
             catch
@@ -43,18 +35,18 @@ namespace TeddyMatch.Controllers
         }
 
         // GET: Setup/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
             return View();
         }
 
         // POST: Setup/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                TeddyMatchModel.Update(Session, new MatchWord {Word = Request.Form["Word"], ImageUrl = Request.Form["ImageURL"]}, id);
 
                 return RedirectToAction("Index");
             }
@@ -62,27 +54,21 @@ namespace TeddyMatch.Controllers
             {
                 return View();
             }
-        }
-
-        // GET: Setup/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
         }
 
         // POST: Setup/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                TeddyMatchModel.Delete(Session, id);
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
     }

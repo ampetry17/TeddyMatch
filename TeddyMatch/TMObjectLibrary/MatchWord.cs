@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace TeddyMatch.Models
+namespace TeddyMatch.TMObjectLibrary
 {
+    [Serializable]
     public class MatchWord
     {
         public string Word { get; set; }
